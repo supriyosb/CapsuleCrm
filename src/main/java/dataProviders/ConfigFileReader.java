@@ -122,4 +122,34 @@ public class ConfigFileReader {
         if(author!= null) return author;
         else throw new AutomationFrameworkException("Author not specified in the Configuration.properties file for the Key:author");
     }
+
+    /**
+     * It will return report name for report from Configuration.properties file
+     * @return
+     */
+    public String getReportName(){
+        String reportName = properties.getProperty("reportName");
+        if(reportName!=null) return reportName;
+        else throw new AutomationFrameworkException("Report Name not specified in the Configuration.properties file for the Key:reportName");
+    }
+
+    /**
+     * It will return report title for report from Configuration.properties file
+     * @return
+     */
+    public String getReportTitle(){
+        String reportTitle = properties.getProperty("reportTitle");
+        if(reportTitle!=null) return reportTitle;
+        else throw new AutomationFrameworkException("Report Title not specified in the Configuration.properties file for the Key:reportTitle");
+    }
+
+    /**
+     * It will return time stramp format for report from Configuration.properties file
+     * @return
+     */
+    public String getReportTimeStrampFormat(){
+        String reportTimeStrampFormat = properties.getProperty("reportTimeStrampFormat");
+        if(reportTimeStrampFormat!=null) return reportTimeStrampFormat;
+        else throw new AutomationFrameworkException("Report TimeStrampFormat not specified in the Configuration.properties file for the Key:reportTimeStrampFormat");
+    }
 }

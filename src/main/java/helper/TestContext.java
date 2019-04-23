@@ -1,11 +1,13 @@
 package helper;
 
 import managers.PageObjectManager;
+import managers.ReportManager;
 import managers.WebDriverManager;
 
 public class TestContext {
     private WebDriverManager webDriverManager;
     private PageObjectManager pageObjectManager;
+    private ReportManager reportManager;
 
     /**
      * Constructor
@@ -14,6 +16,7 @@ public class TestContext {
     public TestContext(){
         webDriverManager = new WebDriverManager();
         pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
+        reportManager = new ReportManager();
     }
 
     /**
@@ -30,5 +33,13 @@ public class TestContext {
      */
     public PageObjectManager getPageObjectManager() {
         return pageObjectManager;
+    }
+
+    /**
+     * It will return ReportManager instance
+     * @return
+     */
+    public ReportManager getReportManager() {
+        return reportManager;
     }
 }

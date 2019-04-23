@@ -1,12 +1,24 @@
 package base;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import helper.TestContext;
 import managers.FileReaderManager;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
+import utils.Utility;
 
 import java.io.File;
+import java.io.IOException;
 
 public class TestBase extends TestContext {
+
+    public ExtentReports extentReports;
+    public ExtentTest reporter;
 
     /**
      * This will execute before class to setup
@@ -14,7 +26,7 @@ public class TestBase extends TestContext {
      */
     @BeforeClass(alwaysRun = true)
     public void setUpClass() throws Exception {
-
+        extentReports = getReportManager().getExtentReports();
     }
 
     /**
@@ -37,8 +49,19 @@ public class TestBase extends TestContext {
      * This will execute after method
      */
     @AfterMethod
-    public void afterMethod(){
-
+    public void getResult(ITestResult result) throws IOException {
+        if(result.getStatus() == ITestResult.FAILURE) {
+            String temp = Utility.getScreenshot(getWebDriverManager().getDriver());
+            reporter.log(Status.FAIL, MarkupHelper.createLabel(result.getName()+" FAILED ", ExtentColor.RED));
+            reporter.fail(result.getThrowable().getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+        }
+        else if(result.getStatus() == ITestResult.SUCCESS) {
+            reporter.log(Status.PASS, MarkupHelper.createLabel(result.getName()+" PASSED ", ExtentColor.GREEN));
+        }
+        else {
+            reporter.log(Status.SKIP, MarkupHelper.createLabel(result.getName()+" SKIPPED ", ExtentColor.ORANGE));
+            reporter.skip(result.getThrowable());
+        }
     }
 
     /**
@@ -54,7 +77,7 @@ public class TestBase extends TestContext {
      */
     @AfterTest
     public void afterTest(){
-
+        extentReports.flush();
     }
 
     /**
