@@ -37,7 +37,7 @@ public class Assignment02 extends TestBase {
         reporter.log(Status.PASS, "Bangalore is selected as arrival city");
 
         //Selecting departure date
-        String date = "23-April-2019";
+        String date = "24-April-2019";
         getPageObjectManager().getFlightPage().selectDepartureDateFromCalender(date);
         reporter.log(Status.PASS, "'"+date+"' is selected as departure date");
 
@@ -116,6 +116,9 @@ public class Assignment02 extends TestBase {
      */
     @Test(priority = 2)
     public void SelectFlightAndComparePriceTest(){
+
+        //Initializing reporter log
+        reporter = extentReports.createTest("Select Flight And Compare Price", "To compare the price of selected departure price and return flight with total price");
 
         //Selecting departure flight and getting price for that
         Double priceDepartureFlight = getPageObjectManager().getFlightListPage().getPriceBySelectingDepartureFlightWithIndex(3);

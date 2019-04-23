@@ -14,11 +14,20 @@ public class ReportManager {
 
     }
 
+    /**
+     * It will return ExtentReports instance
+     * @return
+     */
     public ExtentReports getExtentReports(){
         if(extentReports == null) extentReports = createReport();
         return extentReports;
     }
 
+    /**
+     * It will create extent report with all configuration
+     * It will return ExtentReports instance after creation
+     * @return
+     */
     private ExtentReports createReport(){
         htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + FileReaderManager.getInstance().getConfigReader().getReportConfigPath());
         extentReports = new ExtentReports();

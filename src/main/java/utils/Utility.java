@@ -11,10 +11,15 @@ import java.io.IOException;
 
 public class Utility {
 
+    /**
+     * It will take the screen shot and return the screenshot path
+     * @param driver
+     * @return
+     */
     public static String getScreenshot(WebDriver driver) {
         TakesScreenshot ts=(TakesScreenshot) driver;
         File src=ts.getScreenshotAs(OutputType.FILE);
-        String path=System.getProperty("user.dir")+"/Screenshot/"+System.currentTimeMillis()+".png";
+        String path=System.getProperty("user.dir")+"/report/screenshot/"+System.currentTimeMillis()+".png";
         File destination=new File(path);
         try {
             FileUtils.copyFile(src, destination);
