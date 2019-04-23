@@ -152,4 +152,10 @@ public class ConfigFileReader {
         if(reportTimeStrampFormat!=null) return reportTimeStrampFormat;
         else throw new AutomationFrameworkException("Report TimeStrampFormat not specified in the Configuration.properties file for the Key:reportTimeStrampFormat");
     }
+
+    public String getTestDataPath(){
+        String testDataPath = properties.getProperty("testDataPath");
+        if(testDataPath!=null) return testDataPath;
+        else throw new AutomationFrameworkException("Test Data Path not specified in the Configuration.properties file for the Key:testDataPath");
+    }
 }

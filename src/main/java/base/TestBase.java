@@ -6,6 +6,9 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
+import dataProviders.DataModel;
+import dataReader.parser.DataParser;
+import dataReader.parser.ExcelParser;
 import helper.TestContext;
 import managers.FileReaderManager;
 import org.testng.ITestResult;
@@ -13,12 +16,16 @@ import org.testng.annotations.*;
 import utils.Utility;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 public class TestBase extends TestContext {
 
     public ExtentReports extentReports;
     public ExtentTest reporter;
+    public DataModel model;
 
     /**
      * This will execute before class to setup
@@ -27,6 +34,9 @@ public class TestBase extends TestContext {
     @BeforeClass(alwaysRun = true)
     public void setUpClass() throws Exception {
         extentReports = getReportManager().getExtentReports();
+        try(InputStream inputStream = new FileInputStream(System.getProperty("user.dir") + FileReaderManager.getInstance().getConfigReader().getTestDataPath())) {
+            model = ExcelParser.toModelList(DataParser.fromXls(inputStream, 0), DataModel.class).get(0);
+        }
     }
 
     /**

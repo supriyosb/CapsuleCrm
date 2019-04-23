@@ -4,6 +4,9 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Assignment02 extends TestBase {
 
     /**
@@ -29,22 +32,24 @@ public class Assignment02 extends TestBase {
         reporter.log(Status.PASS, "Round Trip option is selected");
 
         //Selecting departure city
-        getPageObjectManager().getFlightPage().selectDepartureCity("DEL");
-        reporter.log(Status.PASS, "Delhi is selected as departure city");
+        getPageObjectManager().getFlightPage().selectDepartureCity(model.getDepartureCityCode());
+        reporter.log(Status.PASS, "'"+model.getDepartureCityCode()+"' is selected as departure city");
 
         //Selecting return city
-        getPageObjectManager().getFlightPage().selectReturnCity("BLR");
-        reporter.log(Status.PASS, "Bangalore is selected as arrival city");
+        getPageObjectManager().getFlightPage().selectReturnCity(model.getArrivalCityCode());
+        reporter.log(Status.PASS, "'"+model.getArrivalCityCode()+"' is selected as arrival city");
 
         //Selecting departure date
-        String date = "24-April-2019";
-        getPageObjectManager().getFlightPage().selectDepartureDateFromCalender(date);
-        reporter.log(Status.PASS, "'"+date+"' is selected as departure date");
+        String departureDate = new SimpleDateFormat("d-MMMM-yyyy").format(Calendar.getInstance().getTime());
+        getPageObjectManager().getFlightPage().selectDepartureDateFromCalender(departureDate);
+        reporter.log(Status.PASS, "'"+departureDate+"' is selected as departure date");
 
         //Selecting return date
-        date = "29-April-2019";
-        getPageObjectManager().getFlightPage().selectReturnDateFromCalender(date);
-        reporter.log(Status.PASS, "'"+date+"' is selected as arrival date");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, Integer.valueOf(model.getDateInterval()));
+        String returndate = new SimpleDateFormat("d-MMMM-yyyy").format(calendar.getTime());
+        getPageObjectManager().getFlightPage().selectReturnDateFromCalender(returndate);
+        reporter.log(Status.PASS, "'"+returndate+"' is selected as return date");
 
         //Clicking search button
         getPageObjectManager().getFlightPage().clickSearchButton();
@@ -121,7 +126,7 @@ public class Assignment02 extends TestBase {
         reporter = extentReports.createTest("Select Flight And Compare Price", "To compare the price of selected departure price and return flight with total price");
 
         //Selecting departure flight and getting price for that
-        Double priceDepartureFlight = getPageObjectManager().getFlightListPage().getPriceBySelectingDepartureFlightWithIndex(3);
+        Double priceDepartureFlight = getPageObjectManager().getFlightListPage().getPriceBySelectingDepartureFlightWithIndex(Integer.valueOf(model.getDepartureFlightIndex()));
         System.out.println("Price of selected departure flight: " + priceDepartureFlight);
         reporter.log(Status.PASS, "Departure flight is selected");
         reporter.info("Price of selected departure flight: " + priceDepartureFlight);
@@ -135,7 +140,7 @@ public class Assignment02 extends TestBase {
         reporter.log(Status.PASS, "Departure flight price is same with final price");
 
         //Selecting return flight and getting price for that
-        Double priceReturnFlight = getPageObjectManager().getFlightListPage().getPriceBySelectingReturnFlightWithIndex(2);
+        Double priceReturnFlight = getPageObjectManager().getFlightListPage().getPriceBySelectingReturnFlightWithIndex(Integer.valueOf(model.getArrivalFlightIndex()));
         System.out.println("Price of selected return flight" + priceReturnFlight);
         reporter.log(Status.PASS, "Return flight is selected");
         reporter.info("Price of selected return flight" + priceReturnFlight);
