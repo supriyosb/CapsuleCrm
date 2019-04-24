@@ -93,6 +93,7 @@ public class FlightListPageKeyword extends BaseKeywords {
         String strIndex = index.toString();
         WebElement element = waitForVisibilityOfElement(By.xpath(locators.lablePriceDepartureFlight.replace("$index$", strIndex)), Constant.DEFAULT_TIMEOUT);
         clickUsingJS(element);
+        sleep(1000);
         String strPrice = element.getText();
         return convertPriceToDouble(strPrice);
     }
@@ -107,6 +108,7 @@ public class FlightListPageKeyword extends BaseKeywords {
         String strIndex = index.toString();
         WebElement element = waitForVisibilityOfElement(By.xpath(locators.lablePricereturnFlight.replace("$index$", strIndex)), Constant.DEFAULT_TIMEOUT);
         clickUsingJS(element);
+        sleep(1000);
         String strPrice = element.getText();
         return convertPriceToDouble(strPrice);
     }
