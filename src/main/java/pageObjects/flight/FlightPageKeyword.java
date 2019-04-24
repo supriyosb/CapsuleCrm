@@ -38,7 +38,7 @@ public class FlightPageKeyword extends BaseKeywords {
         WebElement element = waitForVisibilityOfElement(By.xpath(locators.labelFromCity), Constant.DEFAULT_TIMEOUT);
         element.click();
         element = waitForVisibilityOfElement(By.xpath(locators.txtFromCity.replace("$cityCode$", cityCode)), Constant.DEFAULT_TIMEOUT);
-        element.click();
+        clickUsingJS(element);
     }
 
     /**
@@ -49,7 +49,7 @@ public class FlightPageKeyword extends BaseKeywords {
         WebElement element = waitForVisibilityOfElement(By.xpath(locators.labelToCity), Constant.DEFAULT_TIMEOUT);
         element.click();
         element = waitForVisibilityOfElement(By.xpath(locators.txtToCity.replace("$cityCode$", cityCode)), Constant.DEFAULT_TIMEOUT);
-        element.click();
+        clickUsingJS(element);
     }
 
     /**
