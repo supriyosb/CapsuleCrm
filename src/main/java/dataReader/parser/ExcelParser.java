@@ -21,11 +21,24 @@ public final class ExcelParser<T> {
         registerTransformer(String.class, new StringIdentityTransformer());
     }
 
+    /**
+     * Constructor
+     * It will initialize the Table object and Class object
+     * @param table
+     * @param modelClass
+     */
     public ExcelParser(Table table, Class<T> modelClass) {
         this.table = table;
         this.modelClass = modelClass;
     }
 
+    /**
+     * It will return the data list
+     * @param tableParser
+     * @param modelClass
+     * @param <T>
+     * @return
+     */
     public static <T>List<T> toModelList(TableParser tableParser, Class<T> modelClass){
         try{
             return (new ExcelParser(tableParser.readFile(), modelClass)).map();
@@ -38,6 +51,12 @@ public final class ExcelParser<T> {
         transformers.put(targetClass, transformer);
     }
 
+    /**
+     * It will map the data
+     * @return
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     */
     List<T> map() throws IllegalAccessException, InstantiationException{
         List<T> mappedModels = new ArrayList(this.table.getData().size());
         List<Field> fieldList = fieldList(this.table.getHeader(), this.modelClass);
@@ -68,6 +87,12 @@ public final class ExcelParser<T> {
         return mappedModels;
     }
 
+    /**
+     * It will return the list of Fields
+     * @param headers
+     * @param clazz
+     * @return
+     */
     private static List<Field> fieldList(List<String> headers, Class<?> clazz){
         boolean found = false;
         Field[] allFields = FieldUtils.getAllFields(clazz);

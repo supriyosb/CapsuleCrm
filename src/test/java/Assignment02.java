@@ -1,5 +1,7 @@
 import base.TestBase;
 import com.aventstack.extentreports.Status;
+import dataProviders.DataModel;
+import dataProviders.DataProvider;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
@@ -119,8 +121,8 @@ public class Assignment02 extends TestBase {
     /**
      * This test will compare the price of selected departure price and return flight with total price
      */
-    @Test(priority = 2)
-    public void SelectFlightAndComparePriceTest(){
+    @Test(priority = 2, dataProvider = "data-provider", dataProviderClass = DataProvider.class)
+    public void SelectFlightAndComparePriceTest(DataModel model){
 
         //Initializing reporter log
         reporter = extentReports.createTest("Select Flight And Compare Price", "To compare the price of selected departure price and return flight with total price");
@@ -128,7 +130,7 @@ public class Assignment02 extends TestBase {
         //Selecting departure flight and getting price for that
         Double priceDepartureFlight = getPageObjectManager().getFlightListPage().getPriceBySelectingDepartureFlightWithIndex(Integer.valueOf(model.getDepartureFlightIndex()));
         System.out.println("Price of selected departure flight: " + priceDepartureFlight);
-        reporter.log(Status.PASS, "Departure flight is selected");
+        reporter.log(Status.PASS, "Departure flight is selected at index '"+model.getDepartureFlightIndex()+"'");
         reporter.info("Price of selected departure flight: " + priceDepartureFlight);
 
         Double finalPriceDepartureFlight = getPageObjectManager().getFlightListPage().getFinalPriceOfDepartureFlight();
@@ -142,7 +144,7 @@ public class Assignment02 extends TestBase {
         //Selecting return flight and getting price for that
         Double priceReturnFlight = getPageObjectManager().getFlightListPage().getPriceBySelectingReturnFlightWithIndex(Integer.valueOf(model.getArrivalFlightIndex()));
         System.out.println("Price of selected return flight" + priceReturnFlight);
-        reporter.log(Status.PASS, "Return flight is selected");
+        reporter.log(Status.PASS, "Return flight is selected at index '"+model.getArrivalFlightIndex()+"'");
         reporter.info("Price of selected return flight" + priceReturnFlight);
 
         Double finalPriceReturnFlight = getPageObjectManager().getFlightListPage().getFinalPriceOfReturnFlight();

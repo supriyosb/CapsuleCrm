@@ -15,14 +15,31 @@ public class DataParser implements TableParser {
     private static final DataFormatter DATA_FORMATTER = new DataFormatter();
     private final Sheet sheet;
 
+    /**
+     * Constructor
+     * It will initialize the Sheet object
+     * @param sheet
+     */
     public DataParser(Sheet sheet) {
         this.sheet = sheet;
     }
 
+    /**
+     * It will create DataParser object with input file as InputStream and Sheet index
+     * @param input
+     * @param sheetIndex
+     * @return
+     * @throws IOException
+     */
     public static DataParser fromXls(InputStream input, int sheetIndex) throws IOException {
         return new DataParser((new HSSFWorkbook(input)).getSheetAt(sheetIndex));
     }
 
+    /**
+     * It will read the input file and convert into Table object and will return the Table object
+     * @return
+     * @throws IOException
+     */
     @Override
     public Table readFile() throws IOException {
         int lastRowNum = this.sheet.getLastRowNum();
@@ -55,6 +72,11 @@ public class DataParser implements TableParser {
         return new Table(header, content);
     }
 
+    /**
+     * It will return cell value as String
+     * @param cell
+     * @return
+     */
     private static String getCellValue(Cell cell){
         if (cell == null){
             return "";
