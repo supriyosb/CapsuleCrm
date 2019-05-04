@@ -153,9 +153,96 @@ public class ConfigFileReader {
         else throw new AutomationFrameworkException("Report TimeStrampFormat not specified in the Configuration.properties file for the Key:reportTimeStrampFormat");
     }
 
+    /**
+     * It will return the test data path from Configuration.properties file
+     * @return
+     */
     public String getTestDataPath(){
         String testDataPath = properties.getProperty("testDataPath");
         if(testDataPath!=null) return testDataPath;
         else throw new AutomationFrameworkException("Test Data Path not specified in the Configuration.properties file for the Key:testDataPath");
+    }
+
+    /**
+     * It will return browser stack username from Configuration.properties file
+     * @return
+     */
+    public String getBrowserStackUsername(){
+        String browserStackUsername = properties.getProperty("browserStackUsername");
+        if(browserStackUsername!=null) return browserStackUsername;
+        else throw  new AutomationFrameworkException("Browser stack username not specified in the Configuration.properties file for the Key:browserStackUsername");
+    }
+
+    /**
+     * It will return browser stack access key from Configuration.properties file
+     * @return
+     */
+    public String getBrowserStackAccessKey(){
+        String browserStackAccessKey = properties.getProperty("browserStackAccessKey");
+        if (browserStackAccessKey!=null) return browserStackAccessKey;
+        else throw new AutomationFrameworkException("Browser stack access key not specified in the Configuration.properties file for the kwy:browserStackAccessKey");
+    }
+
+    /**
+     * It will return browser stack url from Configuration.properties file
+     * @return
+     */
+    public String getBrowserStackUrl(){
+        String browserStackURL = properties.getProperty("browserStackURL");
+        browserStackURL = browserStackURL.replace("$browserStackUsername$", getBrowserStackUsername()).replace("$browserStackAccessKey$", getBrowserStackAccessKey());
+        if (browserStackURL!=null) return browserStackURL;
+        else throw new AutomationFrameworkException("Browser stack URL not specified in the Configuration.properties file for the Key:browserStackURL");
+    }
+
+    /**
+     * It will return browser name from Configuration.properties file
+     * @return
+     */
+    public String getBrowserName(){
+        String browserName = properties.getProperty("browserName");
+        if (browserName!=null) return browserName;
+        else throw new AutomationFrameworkException("Browser name not specified in the Configuration.properties file for the Key:browserName");
+
+    }
+
+    /**
+     * It will return browser version from Configuration.properties file
+     * @return
+     */
+    public String getBrowserVersion(){
+        String browserVersion = properties.getProperty("browserVersion");
+        if (browserVersion!=null) return browserVersion;
+        else throw new AutomationFrameworkException("Browser version not specified in the Configuration.properties file for the Key:browserVersion");
+    }
+
+    /**
+     * It will return OS name from Configuration.properties file
+     * @return
+     */
+    public String getOsName(){
+        String osName = properties.getProperty("osName");
+        if (osName!=null) return osName;
+        else throw new AutomationFrameworkException("OS name not specified in the Configuration.properties file for the Key:osName");
+
+    }
+
+    /**
+     * It will return OS version from Configuration.properties file
+     * @return
+     */
+    public String getOsVersion(){
+        String osVersion = properties.getProperty("osVersion");
+        if (osVersion!=null) return osVersion;
+        else throw new AutomationFrameworkException("OS version not specified in the Configuration.properties file for the Key:osVersion");
+    }
+
+    /**
+     * It will return resolution from Configuration.properties file
+     * @return
+     */
+    public String getResolution(){
+        String resolution = properties.getProperty("resolution");
+        if (resolution!=null) return resolution;
+        else throw new AutomationFrameworkException("Resolution not specified in the Configuration.properties file for the Key:resolution");
     }
 }

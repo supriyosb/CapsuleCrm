@@ -61,7 +61,7 @@ public class Assignment02 extends TestBase {
     /**
      * This test will verify the number of flights present in list of departure flight and return flight
      */
-    @Test(priority = 1)
+    @Test(priority = 1, enabled = false)
     public void FetchNumberOfFlightFromFlightListTest(){
 
         //Initializing reporter log
@@ -121,7 +121,7 @@ public class Assignment02 extends TestBase {
     /**
      * This test will compare the price of selected departure price and return flight with total price
      */
-    @Test(priority = 2, dataProvider = "data-provider", dataProviderClass = DataProvider.class)
+    @Test(priority = 2, dataProvider = "data-provider", dataProviderClass = DataProvider.class, enabled = false)
     public void SelectFlightAndComparePriceTest(DataModel model){
 
         //Initializing reporter log
