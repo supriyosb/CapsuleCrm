@@ -28,7 +28,7 @@ public class FlightListPageKeyword extends BaseKeywords {
      * It will wait until first flight row appear in the screen
      */
     public void waitForListOfFlightToAppear(){
-        waitForVisibilityOfElement(By.xpath(locators.firstDepartureFlightRow), Constant.DEFAULT_TIMEOUT);
+        getUiInstance().waitForElementToVisible(By.xpath(locators.firstDepartureFlightRow), Constant.DEFAULT_TIMEOUT);
     }
 
     /**
@@ -52,8 +52,7 @@ public class FlightListPageKeyword extends BaseKeywords {
      */
     public void clickNonStopOption(){
         scrollToTop();
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.cbNonStop), Constant.DEFAULT_TIMEOUT);
-        element.click();
+        getUiInstance().getElement(By.xpath(locators.cbNonStop), Constant.DEFAULT_TIMEOUT).click();
     }
 
     /**
@@ -61,8 +60,7 @@ public class FlightListPageKeyword extends BaseKeywords {
      */
     public void deselectNonStopOption(){
         scrollToTop();
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.cbNonStop), Constant.DEFAULT_TIMEOUT);
-        element.click();
+        getUiInstance().getElement(By.xpath(locators.cbNonStop), Constant.DEFAULT_TIMEOUT).click();
     }
 
     /**
@@ -70,8 +68,7 @@ public class FlightListPageKeyword extends BaseKeywords {
      */
     public void clickOneStopOption(){
         scrollToTop();
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.cbOneStop), Constant.DEFAULT_TIMEOUT);
-        element.click();
+        getUiInstance().getElement(By.xpath(locators.cbOneStop), Constant.DEFAULT_TIMEOUT).click();
     }
 
     /**
@@ -79,8 +76,7 @@ public class FlightListPageKeyword extends BaseKeywords {
      */
     public void deselectOneStopOption(){
         scrollToTop();
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.cbOneStop), Constant.DEFAULT_TIMEOUT);
-        element.click();
+        getUiInstance().getElement(By.xpath(locators.cbOneStop), Constant.DEFAULT_TIMEOUT).click();
     }
 
     /**
@@ -91,10 +87,9 @@ public class FlightListPageKeyword extends BaseKeywords {
      */
     public Double getPriceBySelectingDepartureFlightWithIndex(Integer index){
         String strIndex = index.toString();
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.lablePriceDepartureFlight.replace("$index$", strIndex)), Constant.DEFAULT_TIMEOUT);
-        clickUsingJS(element);
+        getUiInstance().getElement(By.xpath(locators.lablePriceDepartureFlight.replace("$index$", strIndex)), Constant.DEFAULT_TIMEOUT).clickUsingJs();
         sleep(1000);
-        String strPrice = element.getText();
+        String strPrice = getUiInstance().getElement(By.xpath(locators.lablePriceDepartureFlight.replace("$index$", strIndex)), Constant.DEFAULT_TIMEOUT).getText();
         return convertPriceToDouble(strPrice);
     }
 
@@ -106,10 +101,9 @@ public class FlightListPageKeyword extends BaseKeywords {
      */
     public Double getPriceBySelectingReturnFlightWithIndex(Integer index){
         String strIndex = index.toString();
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.lablePricereturnFlight.replace("$index$", strIndex)), Constant.DEFAULT_TIMEOUT);
-        clickUsingJS(element);
+        getUiInstance().getElement(By.xpath(locators.lablePricereturnFlight.replace("$index$", strIndex)), Constant.DEFAULT_TIMEOUT).clickUsingJs();
         sleep(1000);
-        String strPrice = element.getText();
+        String strPrice = getUiInstance().getElement(By.xpath(locators.lablePricereturnFlight.replace("$index$", strIndex)), Constant.DEFAULT_TIMEOUT).getText();
         return convertPriceToDouble(strPrice);
     }
 
@@ -118,8 +112,7 @@ public class FlightListPageKeyword extends BaseKeywords {
      * @return
      */
     public Double getFinalPriceOfDepartureFlight(){
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.finalPriceDepartureFlight), Constant.DEFAULT_TIMEOUT);
-        String strPrice = element.getText();
+        String strPrice = getUiInstance().getElement(By.xpath(locators.finalPriceDepartureFlight), Constant.DEFAULT_TIMEOUT).getText();
         return convertPriceToDouble(strPrice);
     }
 
@@ -128,8 +121,7 @@ public class FlightListPageKeyword extends BaseKeywords {
      * @return
      */
     public Double getFinalPriceOfReturnFlight(){
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.finalPriceReturnFlight), Constant.DEFAULT_TIMEOUT);
-        String strPrice = element.getText();
+        String strPrice = getUiInstance().getElement(By.xpath(locators.finalPriceReturnFlight), Constant.DEFAULT_TIMEOUT).getText();
         return convertPriceToDouble(strPrice);
     }
 
@@ -138,8 +130,7 @@ public class FlightListPageKeyword extends BaseKeywords {
      * @return
      */
     public Double getTotalPrice(){
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.totalPrice), Constant.DEFAULT_TIMEOUT);
-        String strPrice = element.getText();
+        String strPrice = getUiInstance().getElement(By.xpath(locators.totalPrice), Constant.DEFAULT_TIMEOUT).getText();
         return convertPriceToDouble(strPrice);
     }
 

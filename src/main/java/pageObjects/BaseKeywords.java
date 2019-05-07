@@ -1,11 +1,10 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class BaseKeywords {
     private WebDriver driver;
@@ -17,20 +16,6 @@ public class BaseKeywords {
      */
     public BaseKeywords(WebDriver driver) {
         this.driver = driver;
-    }
-
-    /**
-     * It will explicitely wait until the element got visible in the screen
-     * Once the element is visible, itwill return the element
-     * It will wait until the timeout got expired
-     * @param locator
-     * @param timeout
-     * @return
-     */
-    protected WebElement waitForVisibilityOfElement(By locator, Integer timeout){
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        return element;
     }
 
     /**
@@ -61,11 +46,83 @@ public class BaseKeywords {
     }
 
     /**
-     * It will click the element using JavascriptExecutor
-     * @param element
+     * It will return the Element object
+     * @return
      */
-    protected void clickUsingJS(WebElement element){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", element);
+    protected Element getUiInstance(){
+        Element element = new Element(driver);
+        return element;
+    }
+
+    public class Element{
+
+        private WebElement element;
+        private WebDriver driver;
+
+        /**
+         * Constructor
+         * To initialize WebDriver for Element class
+         * @param driver
+         */
+        public Element(WebDriver driver) {
+            this.driver = driver;
+        }
+
+        /**
+         * It will initialize WebElement object and return the Element object
+         * @param locator
+         * @return
+         */
+        public Element getElement(By locator){
+            element = driver.findElement(locator);
+            return this;
+        }
+
+        /**
+         * It will explicitely wait to initialize WebElement object and return Element object
+         * @param locator
+         * @param timeout
+         * @return
+         */
+        public Element getElement(By locator, Integer timeout){
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return this;
+        }
+
+        /**
+         * It will wait for specific time and then it will return true or false incase element is visible or not
+         * @param locator
+         * @param timeout
+         * @return
+         */
+        public Boolean waitForElementToVisible(By locator, Integer timeout){
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return element.isDisplayed();
+        }
+
+        /**
+         * It will do the click operation
+         */
+        public void click(){
+            element.click();
+        }
+
+        /**
+         * It will do click operation using Javascript Executor
+         */
+        public void clickUsingJs(){
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();", element);
+        }
+
+        /**
+         * It will return the text of WebElement
+         * @return
+         */
+        public String getText(){
+            return element.getText();
+        }
     }
 }

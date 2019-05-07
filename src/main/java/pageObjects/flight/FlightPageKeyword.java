@@ -26,8 +26,7 @@ public class FlightPageKeyword extends BaseKeywords {
      * It will select round trip option for flights
      */
     public void selectRoundTripOption(){
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.radioRoundTrip), Constant.DEFAULT_TIMEOUT);
-        element.click();
+        getUiInstance().getElement(By.xpath(locators.radioRoundTrip), Constant.DEFAULT_TIMEOUT).click();
     }
 
     /**
@@ -35,10 +34,8 @@ public class FlightPageKeyword extends BaseKeywords {
      * @param cityCode
      */
     public void selectDepartureCity(String cityCode){
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.labelFromCity), Constant.DEFAULT_TIMEOUT);
-        element.click();
-        element = waitForVisibilityOfElement(By.xpath(locators.txtFromCity.replace("$cityCode$", cityCode)), Constant.DEFAULT_TIMEOUT);
-        clickUsingJS(element);
+        getUiInstance().getElement(By.xpath(locators.labelFromCity), Constant.DEFAULT_TIMEOUT).click();
+        getUiInstance().getElement(By.xpath(locators.txtFromCity.replace("$cityCode$", cityCode)), Constant.DEFAULT_TIMEOUT).clickUsingJs();
     }
 
     /**
@@ -46,10 +43,8 @@ public class FlightPageKeyword extends BaseKeywords {
      * @param cityCode
      */
     public void selectReturnCity(String cityCode){
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.labelToCity), Constant.DEFAULT_TIMEOUT);
-        element.click();
-        element = waitForVisibilityOfElement(By.xpath(locators.txtToCity.replace("$cityCode$", cityCode)), Constant.DEFAULT_TIMEOUT);
-        clickUsingJS(element);
+        getUiInstance().getElement(By.xpath(locators.labelToCity), Constant.DEFAULT_TIMEOUT).click();
+        getUiInstance().getElement(By.xpath(locators.txtToCity.replace("$cityCode$", cityCode)), Constant.DEFAULT_TIMEOUT).clickUsingJs();
     }
 
     /**
@@ -60,10 +55,8 @@ public class FlightPageKeyword extends BaseKeywords {
         String[] dateArr = date.split("-");
         String day = dateArr[0];
         String month = dateArr[1];
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.lableDateDeparture), Constant.DEFAULT_TIMEOUT);
-        element.click();
-        element = waitForVisibilityOfElement(By.xpath(locators.celldate.replace("$month$", month).replace("$day$", day)), Constant.DEFAULT_TIMEOUT);
-        element.click();
+        getUiInstance().getElement(By.xpath(locators.lableDateDeparture), Constant.DEFAULT_TIMEOUT).click();
+        getUiInstance().getElement(By.xpath(locators.celldate.replace("$month$", month).replace("$day$", day)), Constant.DEFAULT_TIMEOUT).click();
     }
 
     /**
@@ -74,17 +67,14 @@ public class FlightPageKeyword extends BaseKeywords {
         String[] dateArr = date.split("-");
         String day = dateArr[0];
         String month = dateArr[1];
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.labelDateReyurn), Constant.DEFAULT_TIMEOUT);
-        element.click();
-        element = waitForVisibilityOfElement(By.xpath(locators.celldate.replace("$month$", month).replace("$day$", day)), Constant.DEFAULT_TIMEOUT);
-        element.click();
+        getUiInstance().getElement(By.xpath(locators.labelDateReyurn), Constant.DEFAULT_TIMEOUT).click();
+        getUiInstance().getElement(By.xpath(locators.celldate.replace("$month$", month).replace("$day$", day)), Constant.DEFAULT_TIMEOUT).click();
     }
 
     /**
      * It will click on search button to search flights with all information.
      */
     public void clickSearchButton(){
-        WebElement element = waitForVisibilityOfElement(By.xpath(locators.linkSearch), Constant.DEFAULT_TIMEOUT);
-        element.click();
+        getUiInstance().getElement(By.xpath(locators.linkSearch), Constant.DEFAULT_TIMEOUT).click();
     }
 }
