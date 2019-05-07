@@ -33,8 +33,6 @@ public class HomePageKeyword extends BaseKeywords {
      * It will click the Flight link option from the menu bar
      */
     public void clickFlightLink(){
-        //WebElement element = waitForVisibilityOfElement(By.xpath(locators.linkFlights), Constant.DEFAULT_TIMEOUT);
-        //element.click();
         getUiInstance().getElement(By.xpath(locators.linkFlights), Constant.DEFAULT_TIMEOUT).clickUsingJs();
 
     }
