@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name = "MakeMyTrip" parallel="methods" thread-count="2">
+    <test name = "Assignment2">
+        <classes>
+            <class name = "Assignment01" />
+            <class name = "Assignment02" />
+        </classes>
+    </test>
+</suite>

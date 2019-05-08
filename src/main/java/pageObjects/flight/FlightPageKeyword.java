@@ -75,6 +75,6 @@ public class FlightPageKeyword extends BaseKeywords {
      * It will click on search button to search flights with all information.
      */
     public void clickSearchButton(){
-        getUiInstance().getElement(By.xpath(locators.linkSearch), Constant.DEFAULT_TIMEOUT).click();
+        getUiInstance().getElement(By.xpath(locators.linkSearch), Constant.DEFAULT_TIMEOUT).clickUsingJs();
     }
 }

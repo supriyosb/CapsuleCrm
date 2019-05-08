@@ -85,9 +85,9 @@ public class TestBase extends TestContext {
     /**
      * This will execute after execution of test method got completed
      */
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void afterTest(){
-        extentReports.flush();
+        //extentReports.flush();
     }
 
     /**
@@ -103,6 +103,6 @@ public class TestBase extends TestContext {
      */
     @AfterSuite
     public void afterSuite(){
-
+        extentReports.flush();
     }
 }

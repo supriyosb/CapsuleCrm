@@ -8,7 +8,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class ReportManager {
 
     private ExtentHtmlReporter htmlReporter;
-    private ExtentReports extentReports;
+    private static ExtentReports extentReports;
 
     public ReportManager() {
 

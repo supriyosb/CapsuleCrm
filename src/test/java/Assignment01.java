@@ -3,13 +3,12 @@ import com.aventstack.extentreports.Status;
 import dataProviders.DataModel;
 import dataProviders.DataProvider;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Assignment02 extends TestBase {
+public class Assignment01 extends TestBase {
 
     /**
      * This test will verify launch the application
@@ -19,7 +18,7 @@ public class Assignment02 extends TestBase {
     public void LaunchApplicationAndSearchFlightTest(){
 
         //Initializing reporter log
-        reporter = extentReports.createTest("Launch Application And Search Flight 02", "To verify application is launching and user is able to search flights");
+        reporter = extentReports.createTest("Launch Application And Search Flight 01", "To verify application is launching and user is able to search flights");
 
         //Navigating to Make My Trip application home page
         getPageObjectManager().getHomePage().navigateToHomePage();
