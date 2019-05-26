@@ -34,7 +34,8 @@ public class TestBase extends TestContext {
     @BeforeClass(alwaysRun = true)
     public void setUpClass() throws Exception {
         extentReports = getReportManager().getExtentReports();
-        try(InputStream inputStream = new FileInputStream(System.getProperty("user.dir") + FileReaderManager.getInstance().getConfigReader().getTestDataPath())) {
+        String dataFileName = this.getClass().getSimpleName();
+        try(InputStream inputStream = new FileInputStream(System.getProperty("user.dir") + FileReaderManager.getInstance().getConfigReader().getTestDataPath() + dataFileName + ".xls")) {
             model = ExcelParser.toModelList(DataParser.fromXls(inputStream, 0), DataModel.class).get(0);
         }
     }

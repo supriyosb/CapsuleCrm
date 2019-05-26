@@ -2,29 +2,44 @@ package dataProviders;
 
 public class DataModel {
 
-    private String departureCityCode;
-    private String arrivalCityCode;
-    private String departureFlightIndex;
-    private String arrivalFlightIndex;
-    private String dateInterval;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String tag;
+    private String phone;
+    private String email;
+    private String fullName;
 
-    public String getDepartureCityCode() {
-        return departureCityCode;
+    public String getUsername() {
+        return username;
     }
 
-    public String getArrivalCityCode() {
-        return arrivalCityCode;
+    public String getPassword() {
+        return password;
     }
 
-    public String getDepartureFlightIndex() {
-        return departureFlightIndex;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getArrivalFlightIndex() {
-        return arrivalFlightIndex;
+    public String getLastName() {
+        return lastName;
     }
 
-    public String getDateInterval() {
-        return dateInterval;
+    public String getTag() {
+        return tag;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getFullName() {
+        return fullName;
     }
 }

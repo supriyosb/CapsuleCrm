@@ -4,13 +4,15 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.flight.FlightPageKeyword;
 import pageObjects.flightlist.FlightListPageKeyword;
 import pageObjects.home.HomePageKeyword;
+import pageObjects.login.LoginPageKeyword;
+import pageObjects.user.UserPageKeyword;
 
 public class PageObjectManager {
 
     private WebDriver driver;
     private HomePageKeyword homePage;
-    private FlightPageKeyword flightPage;
-    private FlightListPageKeyword flightListPage;
+    private LoginPageKeyword loginPage;
+    private UserPageKeyword userPage;
 
     /**
      * Constructor
@@ -30,18 +32,14 @@ public class PageObjectManager {
     }
 
     /**
-     * It will return FlightPageKeyword instance
+     * It will return LoginPageKeyword instance
      * @return
      */
-    public FlightPageKeyword getFlightPage(){
-        return (flightPage == null) ? flightPage = new FlightPageKeyword(driver) : flightPage;
+    public LoginPageKeyword getLoginPage(){
+        return (loginPage == null) ? loginPage = new LoginPageKeyword(driver) : loginPage;
     }
 
-    /**
-     * It will return FlightListPageKeyword instance
-     * @return
-     */
-    public FlightListPageKeyword getFlightListPage(){
-        return (flightListPage == null) ? flightListPage = new FlightListPageKeyword(driver) : flightListPage;
+    public UserPageKeyword getUserPage(){
+        return (userPage == null) ? userPage = new UserPageKeyword(driver) : userPage;
     }
 }

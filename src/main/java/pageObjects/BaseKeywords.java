@@ -110,11 +110,26 @@ public class BaseKeywords {
         }
 
         /**
+         * It will verify element is displayed or not
+         */
+        public boolean isDisplayed(){
+            return element.isDisplayed();
+        }
+
+        /**
          * It will do click operation using Javascript Executor
          */
         public void clickUsingJs(){
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].click();", element);
+        }
+
+        /**
+         * It will input some text values inside text fields
+         * @param strText
+         */
+        public void setText(String strText){
+            element.sendKeys(strText);
         }
 
         /**

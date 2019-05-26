@@ -23,17 +23,9 @@ public class HomePageKeyword extends BaseKeywords {
     }
 
     /**
-     * It will navigate to home page of the application
+     * It will click the user icon
      */
-    public void navigateToHomePage(){
-        driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
-    }
-
-    /**
-     * It will click the Flight link option from the menu bar
-     */
-    public void clickFlightLink(){
-        getUiInstance().getElement(By.xpath(locators.linkFlights), Constant.DEFAULT_TIMEOUT).clickUsingJs();
-
+    public void clickUserIcon(){
+        getUiInstance().getElement(locators.linkUser, Constant.DEFAULT_TIMEOUT).click();
     }
 }

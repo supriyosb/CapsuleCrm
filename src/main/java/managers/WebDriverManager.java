@@ -85,7 +85,8 @@ public class WebDriverManager {
             case FIREFOX : driver = new FirefoxDriver();
                 break;
             case CHROME :
-                System.setProperty(CHROME_DRIVER_PROPERTY, System.getProperty("user.dir") + FileReaderManager.getInstance().getConfigReader().getDriverPath());
+                //System.setProperty(CHROME_DRIVER_PROPERTY, System.getProperty("user.dir") + FileReaderManager.getInstance().getConfigReader().getDriverPath());
+                io.github.bonigarcia.wdm.WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
             case INTERNETEXPLORER : driver = new InternetExplorerDriver();

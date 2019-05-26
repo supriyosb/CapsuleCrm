@@ -1,5 +1,7 @@
 package pageObjects.home;
 
+import org.openqa.selenium.By;
+
 public class HomePageLocators {
 
     /**
@@ -10,4 +12,5 @@ public class HomePageLocators {
     }
 
     String linkFlights = "//span[text()='Flights']/parent::a";
+    By linkUser = By.xpath("//a[@aria-label='People & Organisations']");
 }
