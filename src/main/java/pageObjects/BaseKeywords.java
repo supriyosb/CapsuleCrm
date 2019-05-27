@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Constant;
 
 import java.util.List;
 
@@ -106,6 +107,8 @@ public class BaseKeywords {
          * It will do the click operation
          */
         public void click(){
+            WebDriverWait wait = new WebDriverWait(driver, Constant.DEFAULT_TIMEOUT);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
             element.click();
         }
 

@@ -1,5 +1,6 @@
 package pageObjects.user;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.google.common.base.Strings;
 import dataProviders.DataModel;
 import org.openqa.selenium.By;
@@ -11,6 +12,7 @@ import utils.Constant;
 public class UserPageKeyword extends BaseKeywords {
 
     private WebDriver driver;
+    private ExtentTest reporter;
     private UserPageLocators locators;
 
     /**
@@ -19,9 +21,10 @@ public class UserPageKeyword extends BaseKeywords {
      *
      * @param driver
      */
-    public UserPageKeyword(WebDriver driver) {
+    public UserPageKeyword(WebDriver driver, ExtentTest reporter) {
         super(driver);
         this.driver = driver;
+        this.reporter = reporter;
         locators = new UserPageLocators();
     }
 
@@ -30,6 +33,7 @@ public class UserPageKeyword extends BaseKeywords {
      */
     public void clickAddUserButton(){
         getUiInstance().getElement(locators.linkAddUser, Constant.DEFAULT_TIMEOUT).click();
+        reporter.info("Clicking Add Person button");
     }
 
     /**
@@ -37,7 +41,8 @@ public class UserPageKeyword extends BaseKeywords {
      */
     public void addTag(String tag){
         getUiInstance().getElement(locators.txtTag, Constant.DEFAULT_TIMEOUT).setText(tag);
-        getUiInstance().getElement(locators.btnAddTag, Constant.DEFAULT_TIMEOUT).click();
+        getUiInstance().getElement(locators.btnAddTag, Constant.DEFAULT_TIMEOUT).clickUsingJs();
+        reporter.info("Adding Tag: '"+tag+"'");
     }
 
     /**
@@ -47,6 +52,7 @@ public class UserPageKeyword extends BaseKeywords {
      */
     public boolean verifyPartyTitle(String strTitle){
         String actualtitle = getUiInstance().getElement(locators.lablePartyTitle, Constant.DEFAULT_TIMEOUT).getText();
+        reporter.info("Getting party title from application: '"+actualtitle+"'");
         return strTitle.equals(actualtitle) ? true : false;
     }
 
@@ -55,13 +61,20 @@ public class UserPageKeyword extends BaseKeywords {
      * @param model
      */
     public void addPerson(DataModel model){
+        reporter.info("Adding person");
         getUiInstance().getElement(locators.txtFirstName, Constant.DEFAULT_TIMEOUT).setText(model.getFirstName());
+        reporter.info("Providing first name: '"+model.getFirstName()+"'");
         getUiInstance().getElement(locators.txtLastName, Constant.DEFAULT_TIMEOUT).setText(model.getLastName());
+        reporter.info("Providing last name: '"+model.getLastName()+"'");
         addTag(model.getTag());
         getUiInstance().getElement(locators.txtPhoneNumber, Constant.DEFAULT_TIMEOUT).setText(model.getPhone());
+        reporter.info("Providing phone number: '"+model.getPhone()+"'");
         getUiInstance().getElement(locators.txtEmail, Constant.DEFAULT_TIMEOUT).setText(model.getEmail());
-        getUiInstance().getElement(locators.btnSave, Constant.DEFAULT_TIMEOUT).click();
+        reporter.info("Providing email: '"+model.getEmail()+"'");
+        getUiInstance().getElement(locators.btnSave, Constant.DEFAULT_TIMEOUT).clickUsingJs();
+        reporter.info("Clicking save button");
         sleep(2000);
+        reporter.info("Verifying party title");
         verifyPartyTitle(model.getFullName());
     }
 
@@ -71,6 +84,7 @@ public class UserPageKeyword extends BaseKeywords {
      * @return
      */
     public boolean verifyNewlyAddedPerson(DataModel model){
+        reporter.info("Verifying newly added person");
         String locator = locators.dynPartyRow.replace("$name$", model.getFullName())
                                                 .replace("$email$", model.getEmail())
                                                     .replace("$phone$", model.getPhone());

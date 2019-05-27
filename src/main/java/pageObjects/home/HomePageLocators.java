@@ -11,6 +11,6 @@ public class HomePageLocators {
     public HomePageLocators() {
     }
 
-    String linkFlights = "//span[text()='Flights']/parent::a";
     By linkUser = By.xpath("//a[@aria-label='People & Organisations']");
+    By linkCase = By.xpath("//a[@aria-label='Cases']");
 }

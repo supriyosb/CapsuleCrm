@@ -10,6 +10,10 @@ public class DataModel {
     private String phone;
     private String email;
     private String fullName;
+    private String caseName;
+    private String caseTag;
+    private String caseDescription;
+    private String caseStatus;
 
     public String getUsername() {
         return username;
@@ -41,5 +45,21 @@ public class DataModel {
 
     public String getFullName() {
         return fullName;
+    }
+
+    public String getCaseName() {
+        return caseName;
+    }
+
+    public String getCaseTag() {
+        return caseTag;
+    }
+
+    public String getCaseDescription() {
+        return caseDescription;
+    }
+
+    public String getCaseStatus() {
+        return caseStatus;
     }
 }
