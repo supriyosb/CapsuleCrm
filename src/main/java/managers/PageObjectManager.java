@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.cases.CasePageKeywords;
 import pageObjects.home.HomePageKeyword;
 import pageObjects.login.LoginPageKeyword;
+import pageObjects.settings.SettingsPageKeywords;
+import pageObjects.settings.SettingsPageLocators;
 import pageObjects.user.UserPageKeyword;
 
 public class PageObjectManager {
@@ -15,6 +17,7 @@ public class PageObjectManager {
     private LoginPageKeyword loginPage;
     private UserPageKeyword userPage;
     private CasePageKeywords casePage;
+    private SettingsPageKeywords settingsPage;
 
     /**
      * Constructor
@@ -59,5 +62,9 @@ public class PageObjectManager {
      */
     public CasePageKeywords getCasePage(){
         return (casePage == null) ? casePage = new CasePageKeywords(driver, reporter) : casePage;
+    }
+
+    public SettingsPageKeywords getSettingsPage(){
+        return (settingsPage == null) ? settingsPage = new SettingsPageKeywords(driver, reporter) : settingsPage;
     }
 }

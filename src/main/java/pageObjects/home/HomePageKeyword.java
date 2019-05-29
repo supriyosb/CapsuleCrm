@@ -40,4 +40,20 @@ public class HomePageKeyword extends BaseKeywords {
         getUiInstance().getElement(locators.linkCase, Constant.DEFAULT_TIMEOUT).click();
         reporter.info("Clicking case icon");
     }
+
+    /**
+     * It will expand the settings option of profile by clicking user profile pic
+     */
+    public void expandSettingsOption(){
+        getUiInstance().getElement(locators.imgProfilePic, Constant.DEFAULT_TIMEOUT).click();
+    }
+
+    /**
+     * It will navigate to account settings option
+     */
+    public void navigateToAccountSettingsOption(){
+        expandSettingsOption();
+        reporter.info("Navigating to Account Settings page");
+        getUiInstance().getElement(locators.linkAccountSetting, Constant.DEFAULT_TIMEOUT).click();
+    }
 }

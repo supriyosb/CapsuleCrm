@@ -2,6 +2,8 @@ package pageObjects.login;
 
 import com.aventstack.extentreports.ExtentTest;
 import managers.FileReaderManager;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import pageObjects.BaseKeywords;
 import utils.Constant;
@@ -40,9 +42,10 @@ public class LoginPageKeyword extends BaseKeywords {
      * @param password
      */
     public void login(String username, String password){
+        reporter.info("Doing login with username: '"+username+"' and password: '"+password+"'");
         getUiInstance().getElement(locators.txtUsername, Constant.DEFAULT_TIMEOUT).setText(username);
+        password = org.apache.commons.codec.binary.StringUtils.newStringUtf8(Base64.decodeBase64(password));
         getUiInstance().getElement(locators.txtPassword, Constant.DEFAULT_TIMEOUT).setText(password);
         getUiInstance().getElement(locators.btnLogin).click();
-        reporter.info("Doing login with username: '"+username+"' and password: ********");
     }
 }

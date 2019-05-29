@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Constant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseKeywords {
@@ -91,6 +92,10 @@ public class BaseKeywords {
             return this;
         }
 
+        public List<WebElement> getAllElements(By locator){
+            return driver.findElements(locator);
+        }
+
         /**
          * It will wait for specific time and then it will return true or false incase element is visible or not
          * @param locator
@@ -101,6 +106,10 @@ public class BaseKeywords {
             WebDriverWait wait = new WebDriverWait(driver, timeout);
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
             return element.isDisplayed();
+        }
+
+        public void waitForPageLoading(){
+            new WebDriverWait(driver, Constant.DEFAULT_TIMEOUT).until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
         }
 
         /**

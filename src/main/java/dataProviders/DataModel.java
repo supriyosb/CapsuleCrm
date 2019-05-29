@@ -14,6 +14,10 @@ public class DataModel {
     private String caseTag;
     private String caseDescription;
     private String caseStatus;
+    private String linkAppearance;
+    private String logoName;
+    private String linkUser;
+    private String settingsUserName;
 
     public String getUsername() {
         return username;
@@ -61,5 +65,21 @@ public class DataModel {
 
     public String getCaseStatus() {
         return caseStatus;
+    }
+
+    public String getLinkAppearance() {
+        return linkAppearance;
+    }
+
+    public String getLogoName() {
+        return logoName;
+    }
+
+    public String getLinkUser() {
+        return linkUser;
+    }
+
+    public String getSettingsUserName() {
+        return settingsUserName;
     }
 }

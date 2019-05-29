@@ -86,7 +86,7 @@ public class WebDriverManager {
                 break;
             case CHROME :
                 //System.setProperty(CHROME_DRIVER_PROPERTY, System.getProperty("user.dir") + FileReaderManager.getInstance().getConfigReader().getDriverPath());
-                io.github.bonigarcia.wdm.WebDriverManager.chromedriver().version(FileReaderManager.getInstance().getConfigReader().getBrowserVersion()).setup();
+                io.github.bonigarcia.wdm.WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
             case INTERNETEXPLORER : driver = new InternetExplorerDriver();
