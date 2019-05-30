@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name = "MakeMyTrip" parallel="methods" thread-count="2">
-    <test name = "Assignment2">
+<suite name = "CapsuleCRM" parallel="methods" thread-count="2">
+    <test name = "Assignment3">
         <classes>
-            <class name = "Assignment01" />
-            <class name = "Assignment02" />
+            <class name = "TC01" />
+            <class name = "TC02" />
         </classes>
     </test>
 </suite>
