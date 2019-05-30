@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageObjects.BaseKeywords;
 import pageObjects.settings.appearrance.AppearancePageKeywords;
+import pageObjects.settings.opportunities.OpportunitiesPageKeywords;
 import pageObjects.settings.users.UserSettingsKeyword;
 import utils.Constant;
 
@@ -20,6 +21,7 @@ public class SettingsPageKeywords extends BaseKeywords {
     private SettingsPageLocators locators;
     private AppearancePageKeywords appearancePage;
     private UserSettingsKeyword userPage;
+    private OpportunitiesPageKeywords opportunitiesPage;
 
     /**
      * Constructor
@@ -48,6 +50,14 @@ public class SettingsPageKeywords extends BaseKeywords {
      */
     public UserSettingsKeyword getUserPage(){
         return (userPage == null) ? userPage = new UserSettingsKeyword(driver, reporter) : userPage;
+    }
+
+    /**
+     * It will return OpportunitiesPageKeywords instance
+     * @return
+     */
+    public OpportunitiesPageKeywords getOpportunitiesPage(){
+        return (opportunitiesPage == null) ? opportunitiesPage = new OpportunitiesPageKeywords(driver, reporter) : opportunitiesPage;
     }
 
     /**

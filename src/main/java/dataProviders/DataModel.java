@@ -18,6 +18,11 @@ public class DataModel {
     private String logoName;
     private String linkUser;
     private String settingsUserName;
+    private String linkOpportunity;
+    private String milestoneName;
+    private String milestoneDesc;
+    private String milestoneProbability;
+    private String milestoneDaysUntilStale;
 
     public String getUsername() {
         return username;
@@ -81,5 +86,25 @@ public class DataModel {
 
     public String getSettingsUserName() {
         return settingsUserName;
+    }
+
+    public String getLinkOpportunity() {
+        return linkOpportunity;
+    }
+
+    public String getMilestoneName() {
+        return milestoneName;
+    }
+
+    public String getMilestoneDesc() {
+        return milestoneDesc;
+    }
+
+    public String getMilestoneProbability() {
+        return milestoneProbability;
+    }
+
+    public String getMilestoneDaysUntilStale() {
+        return milestoneDaysUntilStale;
     }
 }
