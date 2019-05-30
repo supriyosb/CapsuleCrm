@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import pageObjects.BaseKeywords;
 import pageObjects.settings.appearrance.AppearancePageKeywords;
 import pageObjects.settings.opportunities.OpportunitiesPageKeywords;
+import pageObjects.settings.tags.TagsPageKeywords;
+import pageObjects.settings.taskcatagory.TaskCatagoryPageKeywords;
 import pageObjects.settings.tracks.TrackPageKeywords;
 import pageObjects.settings.users.UserSettingsKeyword;
 import utils.Constant;
@@ -24,6 +26,8 @@ public class SettingsPageKeywords extends BaseKeywords {
     private UserSettingsKeyword userPage;
     private OpportunitiesPageKeywords opportunitiesPage;
     private TrackPageKeywords trackPage;
+    private TaskCatagoryPageKeywords taskCatagoryPage;
+    private TagsPageKeywords tagsPage;
 
     /**
      * Constructor
@@ -68,6 +72,22 @@ public class SettingsPageKeywords extends BaseKeywords {
      */
     public TrackPageKeywords getTrackPage(){
         return (trackPage == null) ? trackPage = new TrackPageKeywords(driver, reporter) : trackPage;
+    }
+
+    /**
+     * It will return TaskCatagoryPageKeywords instance
+     * @return
+     */
+    public TaskCatagoryPageKeywords getTaskCatagoryPage(){
+        return (taskCatagoryPage == null) ? taskCatagoryPage = new TaskCatagoryPageKeywords(driver, reporter) : taskCatagoryPage;
+    }
+
+    /**
+     * It will return TagsPageKeywords instance
+     * @return
+     */
+    public TagsPageKeywords getTagsPage(){
+        return (tagsPage == null) ? tagsPage = new TagsPageKeywords(driver, reporter) : tagsPage;
     }
 
     /**

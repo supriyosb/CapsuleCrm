@@ -108,6 +108,19 @@ public class BaseKeywords {
             return element.isDisplayed();
         }
 
+        /**
+         * It will wait until the element will be inivisible
+         * @param locator
+         * @param timeout
+         */
+        public void waitForElementToInvisible(By locator, Integer timeout){
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+        }
+
+        /**
+         * It will wait for loading of page
+         */
         public void waitForPageLoading(){
             new WebDriverWait(driver, Constant.DEFAULT_TIMEOUT).until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
         }

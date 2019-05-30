@@ -20,7 +20,7 @@ public class TC02 extends TestBase {
         getPageObjectManager().getHomePage().navigateToAccountSettingsOption();
 
         //Verify header of account settings page
-        getPageObjectManager().getSettingsPage().verifyAccountSettingsPageOpened();
+        /*getPageObjectManager().getSettingsPage().verifyAccountSettingsPageOpened();
 
         //Verify header sections of each options
         getPageObjectManager().getSettingsPage().verifyHeadersOfEachOptions();
@@ -51,6 +51,24 @@ public class TC02 extends TestBase {
 
         //Adding new track
         getPageObjectManager().getSettingsPage().getTrackPage().addNewTrack(model);
+
+        //Open Task catagory page
+        getPageObjectManager().getSettingsPage().clickLinkOptions(model.getLinkTaskCatagory());
+
+        //Adding new task catagory and verifying
+        getPageObjectManager().getSettingsPage().getTaskCatagoryPage().addTaskcategoryAndVerify(model.getTaskCategoryName());
+
+        //Verify newly added task category name is present
+        getPageObjectManager().getSettingsPage().getTaskCatagoryPage().verifyTaskCatagoryPresent(model.getTaskCategoryName());*/
+
+        //Open Tags page
+        getPageObjectManager().getSettingsPage().clickLinkOptions(model.getLinkTags());
+
+        //Adding new Tag
+        getPageObjectManager().getSettingsPage().getTagsPage().addNewTag(model.getTagsName());
+
+        //Verify newly added tag name is present in the list
+        getPageObjectManager().getSettingsPage().getTagsPage().verifyTagPresent(model.getTagsName());
 
         try {
             Thread.sleep(5000);

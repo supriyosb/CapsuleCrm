@@ -29,6 +29,10 @@ public class DataModel {
     private String taskDesc;
     private String taskcatagory;
     private String taskDays;
+    private String linkTaskCatagory;
+    private String taskCategoryName;
+    private String linkTags;
+    private String tagsName;
 
     public String getUsername() {
         return username;
@@ -136,5 +140,21 @@ public class DataModel {
 
     public String getTaskDays() {
         return taskDays;
+    }
+
+    public String getLinkTaskCatagory() {
+        return linkTaskCatagory;
+    }
+
+    public String getTaskCategoryName() {
+        return taskCategoryName;
+    }
+
+    public String getLinkTags() {
+        return linkTags;
+    }
+
+    public String getTagsName() {
+        return tagsName;
     }
 }
