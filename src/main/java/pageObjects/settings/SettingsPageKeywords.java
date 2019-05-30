@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import pageObjects.BaseKeywords;
 import pageObjects.settings.appearrance.AppearancePageKeywords;
 import pageObjects.settings.opportunities.OpportunitiesPageKeywords;
+import pageObjects.settings.tracks.TrackPageKeywords;
 import pageObjects.settings.users.UserSettingsKeyword;
 import utils.Constant;
 
@@ -22,6 +23,7 @@ public class SettingsPageKeywords extends BaseKeywords {
     private AppearancePageKeywords appearancePage;
     private UserSettingsKeyword userPage;
     private OpportunitiesPageKeywords opportunitiesPage;
+    private TrackPageKeywords trackPage;
 
     /**
      * Constructor
@@ -58,6 +60,14 @@ public class SettingsPageKeywords extends BaseKeywords {
      */
     public OpportunitiesPageKeywords getOpportunitiesPage(){
         return (opportunitiesPage == null) ? opportunitiesPage = new OpportunitiesPageKeywords(driver, reporter) : opportunitiesPage;
+    }
+
+    /**
+     * It will return TrackPageKeywords instance
+     * @return
+     */
+    public TrackPageKeywords getTrackPage(){
+        return (trackPage == null) ? trackPage = new TrackPageKeywords(driver, reporter) : trackPage;
     }
 
     /**

@@ -20,7 +20,7 @@ public class TC02 extends TestBase {
         getPageObjectManager().getHomePage().navigateToAccountSettingsOption();
 
         //Verify header of account settings page
-        /*getPageObjectManager().getSettingsPage().verifyAccountSettingsPageOpened();
+        getPageObjectManager().getSettingsPage().verifyAccountSettingsPageOpened();
 
         //Verify header sections of each options
         getPageObjectManager().getSettingsPage().verifyHeadersOfEachOptions();
@@ -38,13 +38,19 @@ public class TC02 extends TestBase {
         getPageObjectManager().getSettingsPage().getUserPage().inviteUser(model);
 
         //Verify newly invited user
-        getPageObjectManager().getSettingsPage().getUserPage().verifyNewlyInvitedUser(model.getSettingsUserName(), model.getEmail());*/
+        getPageObjectManager().getSettingsPage().getUserPage().verifyNewlyInvitedUser(model.getSettingsUserName(), model.getEmail());
 
         //Open opportunity page
         getPageObjectManager().getSettingsPage().clickLinkOptions(model.getLinkOpportunity());
 
         //Add new milestone and verify
         getPageObjectManager().getSettingsPage().getOpportunitiesPage().addNewMilestoneAndVerify(model);
+
+        //Open track page
+        getPageObjectManager().getSettingsPage().clickLinkOptions(model.getLinkTracks());
+
+        //Adding new track
+        getPageObjectManager().getSettingsPage().getTrackPage().addNewTrack(model);
 
         try {
             Thread.sleep(5000);

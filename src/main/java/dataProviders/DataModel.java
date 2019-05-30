@@ -23,6 +23,12 @@ public class DataModel {
     private String milestoneDesc;
     private String milestoneProbability;
     private String milestoneDaysUntilStale;
+    private String linkTracks;
+    private String trackName;
+    private String trackTag;
+    private String taskDesc;
+    private String taskcatagory;
+    private String taskDays;
 
     public String getUsername() {
         return username;
@@ -106,5 +112,29 @@ public class DataModel {
 
     public String getMilestoneDaysUntilStale() {
         return milestoneDaysUntilStale;
+    }
+
+    public String getLinkTracks() {
+        return linkTracks;
+    }
+
+    public String getTrackName() {
+        return trackName;
+    }
+
+    public String getTrackTag() {
+        return trackTag;
+    }
+
+    public String getTaskDesc() {
+        return taskDesc;
+    }
+
+    public String getTaskcatagory() {
+        return taskcatagory;
+    }
+
+    public String getTaskDays() {
+        return taskDays;
     }
 }
