@@ -50,6 +50,7 @@ public class OpportunitiesPageKeywords extends BaseKeywords {
         getUiInstance().getElement(locators.txtDaysUntilStale, Constant.DEFAULT_TIMEOUT).setText(model.getMilestoneDaysUntilStale());
         reporter.info("Clicking save button");
         getUiInstance().getElement(locators.btnSave, Constant.DEFAULT_TIMEOUT).click();
+        sleep(2000);
         reporter.info("Verifying newly added milestone is present or not: " + milestoneName);
         verifyMilestonePresent(milestoneName);
     }
