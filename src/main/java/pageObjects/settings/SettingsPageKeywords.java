@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageObjects.BaseKeywords;
 import pageObjects.settings.appearrance.AppearancePageKeywords;
+import pageObjects.settings.integrations.IntegrationsPageKeyword;
 import pageObjects.settings.opportunities.OpportunitiesPageKeywords;
 import pageObjects.settings.tags.TagsPageKeywords;
 import pageObjects.settings.taskcatagory.TaskCatagoryPageKeywords;
@@ -28,6 +29,7 @@ public class SettingsPageKeywords extends BaseKeywords {
     private TrackPageKeywords trackPage;
     private TaskCatagoryPageKeywords taskCatagoryPage;
     private TagsPageKeywords tagsPage;
+    private IntegrationsPageKeyword integrationsPage;
 
     /**
      * Constructor
@@ -88,6 +90,14 @@ public class SettingsPageKeywords extends BaseKeywords {
      */
     public TagsPageKeywords getTagsPage(){
         return (tagsPage == null) ? tagsPage = new TagsPageKeywords(driver, reporter) : tagsPage;
+    }
+
+    /**
+     * It will return IntegrationsPageKeyword instance
+     * @return
+     */
+    public IntegrationsPageKeyword getIntegrationsPage(){
+        return (integrationsPage == null) ? integrationsPage = new IntegrationsPageKeyword(driver, reporter) : integrationsPage;
     }
 
     /**

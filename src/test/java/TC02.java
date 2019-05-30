@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 public class TC02 extends TestBase {
 
     @Test(priority = 0)
-    public void addUserAndAddCase(){
+    public void performActivityForAccountSettings(){
 
         //Initializing reporter log
         reporter = extentReports.createTest("Launch Application, Account Settings Related Activity", "To verify application is launching and user is able to perform various activities in account settings");
@@ -20,7 +20,7 @@ public class TC02 extends TestBase {
         getPageObjectManager().getHomePage().navigateToAccountSettingsOption();
 
         //Verify header of account settings page
-        /*getPageObjectManager().getSettingsPage().verifyAccountSettingsPageOpened();
+        getPageObjectManager().getSettingsPage().verifyAccountSettingsPageOpened();
 
         //Verify header sections of each options
         getPageObjectManager().getSettingsPage().verifyHeadersOfEachOptions();
@@ -59,7 +59,7 @@ public class TC02 extends TestBase {
         getPageObjectManager().getSettingsPage().getTaskCatagoryPage().addTaskcategoryAndVerify(model.getTaskCategoryName());
 
         //Verify newly added task category name is present
-        getPageObjectManager().getSettingsPage().getTaskCatagoryPage().verifyTaskCatagoryPresent(model.getTaskCategoryName());*/
+        getPageObjectManager().getSettingsPage().getTaskCatagoryPage().verifyTaskCatagoryPresent(model.getTaskCategoryName());
 
         //Open Tags page
         getPageObjectManager().getSettingsPage().clickLinkOptions(model.getLinkTags());
@@ -70,11 +70,12 @@ public class TC02 extends TestBase {
         //Verify newly added tag name is present in the list
         getPageObjectManager().getSettingsPage().getTagsPage().verifyTagPresent(model.getTagsName());
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        //Open Integration page
+        getPageObjectManager().getSettingsPage().clickLinkOptions(model.getLinkIntegrations());
+
+        //Get total number of Configure button
+        int total = getPageObjectManager().getSettingsPage().getIntegrationsPage().getTotalNoOfConfigureButton();
+        reporter.info("Total number of Configure button present in Integrations page is: " + total);
 
     }
 }

@@ -19,4 +19,7 @@ public class TrackPageLocators {
     String dynCatagoryItem = "//li[contains(text(),'$catagory$')]";
     By txtTaskDays = By.xpath("//input[contains(@id, 'taskDaysAfterDecorate:taskDaysAfter')]");
     By linkSave = By.linkText("Save");
+    String dynTrackDelete = "//a[text()='$trackName$']/ancestor::td/following-sibling::td//a[text()='Delete']";
+    By linkDeleteTrack = By.xpath("//input[@value='Delete track']");
+    By deletePopup = By.id("deleteTrackTemplateModal");
 }

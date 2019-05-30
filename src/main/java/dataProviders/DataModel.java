@@ -33,6 +33,7 @@ public class DataModel {
     private String taskCategoryName;
     private String linkTags;
     private String tagsName;
+    private String linkIntegrations;
 
     public String getUsername() {
         return username;
@@ -156,5 +157,9 @@ public class DataModel {
 
     public String getTagsName() {
         return tagsName;
+    }
+
+    public String getLinkIntegrations() {
+        return linkIntegrations;
     }
 }

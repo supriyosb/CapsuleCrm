@@ -5,9 +5,11 @@ import com.sun.tools.internal.jxc.ap.Const;
 import dataProviders.DataModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageObjects.BaseKeywords;
 import utils.Constant;
 
+import java.util.List;
 import java.util.Random;
 
 public class TrackPageKeywords extends BaseKeywords {
@@ -35,8 +37,11 @@ public class TrackPageKeywords extends BaseKeywords {
      * @param model
      */
     public void addNewTrack(DataModel model){
-        int trackId = new Random().nextInt(100) * new Random().nextInt(100);
-        String trackName = model.getTrackName() + "_" + trackId;
+        String trackName = model.getTrackName();
+        List<WebElement> elementList = getUiInstance().getAllElements(By.linkText(trackName));
+        if (elementList.size() > 0){
+            deleteExistingTrack(trackName);
+        }
         reporter.info("Clicking Add New Track button");
         getUiInstance().getElement(locators.linkAddNewTrack, Constant.DEFAULT_TIMEOUT).click();
         reporter.info("Giving track name: " + trackName);
@@ -68,5 +73,18 @@ public class TrackPageKeywords extends BaseKeywords {
         } else {
             reporter.fail("Track is not present in the list" + trackName);
         }
+    }
+
+    /**
+     * It will delete existing track
+     * @param trackName
+     */
+    public void deleteExistingTrack(String trackName){
+        reporter.info("Deleting existing track: " + trackName);
+        String locator = locators.dynTrackDelete.replace("$trackName$", trackName);
+        getUiInstance().getElement(By.xpath(locator), Constant.DEFAULT_TIMEOUT).click();
+        getUiInstance().getElement(locators.linkDeleteTrack, Constant.DEFAULT_TIMEOUT).click();
+        reporter.info("Delete completed");
+        getUiInstance().waitForElementToInvisible(locators.deletePopup, Constant.DEFAULT_TIMEOUT);
     }
 }
