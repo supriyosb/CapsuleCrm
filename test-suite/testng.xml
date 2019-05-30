@@ -2,8 +2,8 @@
 <suite name = "CapsuleCRM" parallel="methods" thread-count="2">
     <test name = "Assignment3">
         <classes>
-            <class name = "TC01" />
             <class name = "TC02" />
+            <class name = "TC01" />
         </classes>
     </test>
 </suite>

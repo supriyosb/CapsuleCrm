@@ -43,6 +43,7 @@ public class UserPageKeyword extends BaseKeywords {
         getUiInstance().getElement(locators.txtTag, Constant.DEFAULT_TIMEOUT).setText(tag);
         getUiInstance().getElement(locators.btnAddTag, Constant.DEFAULT_TIMEOUT).clickUsingJs();
         reporter.info("Adding Tag: '"+tag+"'");
+        getUiInstance().waitForElementToVisible(locators.btnAddTag, Constant.DEFAULT_TIMEOUT);
     }
 
     /**
@@ -51,6 +52,7 @@ public class UserPageKeyword extends BaseKeywords {
      * @return
      */
     public boolean verifyPartyTitle(String strTitle){
+        getUiInstance().waitForElementToVisible(locators.lablePartyTitle, Constant.DEFAULT_TIMEOUT);
         String actualtitle = getUiInstance().getElement(locators.lablePartyTitle, Constant.DEFAULT_TIMEOUT).getText();
         reporter.info("Getting party title from application: '"+actualtitle+"'");
         return strTitle.equals(actualtitle) ? true : false;

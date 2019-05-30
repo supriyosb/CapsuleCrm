@@ -16,6 +16,7 @@ public class UserPageLocators {
     By txtLastName = By.id("party:lnDecorate:ln");
     By txtTag = By.id("party:tagsDecorate:tagComboBox");
     By btnAddTag = By.xpath("//input[@value='Add tag']");
+    By btnAddingTag = By.xpath("//input[@value='Adding tag...']");
     By txtPhoneNumber = By.xpath("//input[contains(@id,'phnDecorate:number')]");
     By txtEmail = By.xpath("//input[contains(@id,'emlDecorate:nmbr')]");
     By btnSave = By.id("party:save");
